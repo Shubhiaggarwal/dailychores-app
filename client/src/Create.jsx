@@ -8,13 +8,15 @@ function Create({ addTodo }) {
     e.preventDefault();
     if (!task.trim()) return;
 
-    axios
-      .post("http://localhost:3001/add", { task: task.trim() })
-      .then((res) => {
-        addTodo(res.data);
-        setTask("");
-      })
-      .catch((err) => console.error(err));
+    
+axios
+  .post("https://dailychores-app-1.onrender.com/add", { task: task.trim() })
+  .then((res) => {
+    addTodo(res.data);
+    setTask("");
+  })
+  .catch((err) => console.error(err));
+
   };
 
   return (

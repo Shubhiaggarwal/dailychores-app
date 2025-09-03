@@ -4,7 +4,11 @@ const cors = require('cors');
 const TodoModel = require('./models/Todo');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://dailychores-app-4e61-1hlx5obfx-shubhis-projects-6fd93980.vercel.app', // replace with your actual Vercel URL
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Connect MongoDB

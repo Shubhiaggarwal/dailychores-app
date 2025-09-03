@@ -7,21 +7,22 @@ import ThreeModel from "./ThreeModel";
 function Home() {
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/get")
-      .then((res) => setTodos(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+ useEffect(() => {
+  axios.get("https://dailychores-app-1.onrender.com/get")
+    .then((res) => setTodos(res.data))
+    .catch((err) => console.error(err));
+}, []);
+
 
   const addTodo = (todo) => setTodos((prev) => [...prev, todo]);
 
-  const removeTodo = (id) => {
-    axios
-      .delete(`http://localhost:3001/delete/${id}`)
-      .then(() => setTodos((prev) => prev.filter((t) => t._id !== id)))
-      .catch((err) => console.error(err));
-  };
+ const removeTodo = (id) => {
+  axios
+    .delete(`https://dailychores-app-1.onrender.com/delete/${id}`)
+    .then(() => setTodos((prev) => prev.filter((t) => t._id !== id)))
+    .catch((err) => console.error(err));
+};
+
 
   return (
     <div className="main-container">
