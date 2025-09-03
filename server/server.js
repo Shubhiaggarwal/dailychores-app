@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // ✅ Routes
 app.get('/get', async (req, res) => {
+  res.send('Hello from Express!');  
   try {
     const todos = await TodoModel.find({});
     res.json(todos);
