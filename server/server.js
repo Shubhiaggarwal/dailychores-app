@@ -8,10 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 // Connect MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/todolistDB', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
+
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.log("MongoDB connection error:", err));
 
@@ -44,4 +45,6 @@ app.delete('/delete/:id', async (req, res) => {
 });
 
 // Start server
-app.listen(3001, () => console.log("Server running on port 3001"));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
