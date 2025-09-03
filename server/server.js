@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const TodoModel = require('./models/Todo');
 
-const app = express();
+const cors = require('cors');
+
 app.use(cors({
-  origin: 'http://dailychores-app-4e61-1hlx5obfx-shubhis-projects-6fd93980.vercel.app', // replace with your actual Vercel URL
+  origin: 'https://dailychores-app-4e61.vercel.app', // your Vercel frontend URL
   credentials: true
 }));
+
 
 app.use(express.json());
 
