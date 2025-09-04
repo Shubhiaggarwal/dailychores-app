@@ -16,14 +16,17 @@ app.use(express.json());
 // ✅ MongoDB connect
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  // useUnifiedTopology: true,  // ❌ deprecated, remove
 })
 .then(() => console.log("✅ MongoDB connected"))
 .catch(err => console.error("❌ MongoDB connection error:", err));
 
+// ✅ Default route (fixes "Cannot GET /")
+app.get("/", (req, res) => {
+  res.send("🚀 Backend is running fine!");
+});
+
 // ✅ Routes
 app.get('/get', async (req, res) => {
-  res.send('Hello from Express!');  
   try {
     const todos = await TodoModel.find({});
     res.json(todos);
